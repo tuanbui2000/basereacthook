@@ -1,9 +1,21 @@
 import ColletionSlider from "./ColletionSlider";
-import { Carousel, CarouselItem, CarouselIndicators } from 'reactstrap';
-
-import { useState } from 'react';
+import Slider from "react-slick";
+import DisplayAllItem from "./DisplayItem";
+import ProductDetail from "./ProductDetail";
 
 const HomePage = () => {
+
+    const settings = {
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        touchMove: true,
+        autoplay: true,
+        dots: true,
+        // arrows: true,
+
+    }
 
     const homeposterStyle = {
 
@@ -21,65 +33,36 @@ const HomePage = () => {
         backgroundPosition: 'center',
         margin: "10px"
     }
-    const items = [
-        {
-            src: 'https://source.unsplash.com/random',
-            altText: 'Slide 1',
 
-        },
-        {
-            src: 'https://picsum.photos/id/456/1200/400',
-            altText: 'Slide 2',
-
-        },
-        {
-            src: 'https://picsum.photos/id/678/1200/400',
-            altText: 'Slide 3',
-
-        },
+    const images = [
+        { alt: 'Sample', src: 'https://source.unsplash.com/random' },
+        { alt: 'Sample', src: 'https://source.unsplash.com/random' },
+        { alt: 'Sample', src: 'https://source.unsplash.com/random' },
+        { alt: 'Sample', src: 'https://source.unsplash.com/random' },
+        { alt: 'Sample', src: 'https://source.unsplash.com/random' },
     ];
 
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [animating, setAnimating] = useState(false);
 
-    const next = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-        setActiveIndex(nextIndex);
-    };
 
-    const previous = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-        setActiveIndex(nextIndex);
-    };
-
-    const goToIndex = (newIndex) => {
-        if (animating) return;
-        setActiveIndex(newIndex);
-    };
-
-    const slides = items.map((item) => {
+    const sliderItem = images.map((item, index) => {
         return (
-            <CarouselItem
-                onExiting={() => setAnimating(true)}
-                onExited={() => setAnimating(false)}
-                key={item.src}
-            >
-                <img src={item.src} style={homeposterStyle} alt={item.altText} />
-            </CarouselItem>
-        );
-    });
+            <div className="red text-start" key={index}>
+                <img src={item.src} style={homeposterStyle} alt={item.alt} />
+            </div>
 
+        )
+    })
     return (
         <>
-
-
             <div className="container-fluid g-0 red">
-                <Carousel activeIndex={activeIndex} next={next} previous={previous} enableTouch={true}                >
-                    <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-                    {slides}
-                </Carousel>
+
+                <Slider {...settings}>
+
+                    {sliderItem}
+
+                </Slider>
+
+
 
 
 
@@ -87,7 +70,7 @@ const HomePage = () => {
                 <div className="  container g-0 red">
                     {/* title collection  */}
 
-                    <div className="title red text-center m-4"> Title</div>
+                    <div className="title red text-center m-4 h3 fw-bold"> COLLECTION OF TUNS</div>
                     <div className=" colection row g-0 gap-3 my-3  red">
                         <div className="col red text-center" style={collectionStyle} ></div>
                         <div className="col red text-center" style={collectionStyle} ></div>
@@ -97,37 +80,37 @@ const HomePage = () => {
                     </div>
                     {/* collection  */}
                     <div className=" colection row g-0 gap-3  red">
-                        <div className="col red "  >
-                            <div className="image red text-center" style={collectionStyle} ></div>
+                        <div className="col m-3 red "  >
+                            <div className="image red m-3 text-center" style={collectionStyle} ></div>
                             <div>
                                 <div className="title h2 red">tên collection</div>
                                 <button className="see-more-btn red btn btn-secondary">see more</button>
                             </div>
                         </div>
-                        <div className="col red " >
+                        <div className="col m-3 red " >
                             <div>
 
                                 <div className="title h2 red">colletion name</div>
                                 <button className="see-more-btn red btn btn-secondary">see more</button>
                             </div>
-                            <div className="image red text-center" style={collectionStyle} ></div>
+                            <div className="image red m-3 text-center" style={collectionStyle} ></div>
                         </div>
 
 
                     </div>
-                    <ColletionSlider />
-                    <ColletionSlider />
-                    <ColletionSlider />
-                    <ColletionSlider />
+                    <ColletionSlider title={"New Collection"} desciption={"some description about this collection. eg: more beautifull than your ex GF "} />
+                    <ColletionSlider title={"New Collection1"} desciption={"some description about this collection. eg: more beautifull than your ex GF "} />
+                    <ColletionSlider title={"New Collection2"} desciption={"some description about this collection. eg: more beautifull than your ex GF "} />
+                    <ColletionSlider title={"New Collection3"} desciption={"some description about this collection. eg: more beautifull than your ex GF "} />
 
 
 
 
                 </div>
-            </div>
+            </div >
 
-
-
+            <DisplayAllItem />
+            <ProductDetail />
         </>
     )
 

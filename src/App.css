@@ -3,7 +3,15 @@
 }
 
 .red {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
+
+.breadcrumb {
+  padding: 0.5rem !important;
+}
+
+.offcanvas {
+  width: 300px !important;
 }
 
 .App-logo {

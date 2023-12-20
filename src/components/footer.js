@@ -13,6 +13,7 @@ const footer = () => {
         width: '100px',
         height: '100px'
     }
+
     return (
         <><div className="container-fluid gx-0">
             <div className="received"></div>
@@ -63,8 +64,6 @@ const footer = () => {
                             </div>
                         </div>
 
-
-
                     </div>
                 </div>
 
@@ -91,15 +90,20 @@ const footer = () => {
                     </div>
                     <div className="services col-4 red ps-3">
                         <div className="service-title red fw-bold pt-3 row g-0 p-2 ">Dịch vụ khách hàng</div>
-                        <div className="guideline1 red col  p-2">Hướng dẫn bảo quản sản phẩm</div>
-                        <div className="guideline2 red col p-2 ">Chính sách vận chuyển</div>
-                        <div className="guideline3 red col p-2">Chính sách đổi trả</div>
+                        <div className="guideline1 red col p-2" style={{ cursor: "pointer" }} >Hướng dẫn bảo quản sản phẩm</div>
+                        <div className="guideline2 red col p-2 " style={{ cursor: "pointer" }}>Chính sách vận chuyển</div>
+                        <div className="guideline3 red col p-2" style={{ cursor: "pointer" }}>Chính sách đổi trả</div>
                     </div>
                     <div className="contact col-4 red ">
                         <div className="contact-title red fw-bold pt-3 p-2">Liên hệ với chúng tôi</div>
-                        <div className="contact-address red p-2"><span className="fw-bold">Địa chỉ: </span>345 Võ Văn Tần, Phường 05, Quận 3, Hồ Chí Minh</div>
-                        <div className="contact-email red p-2"><span className="fw-bold">Email: </span>tuanbui2122@gmail.com</div>
-                        <div className="contact-phone red p-2"><span className="fw-bold">Điện thoại: </span>+8474531589</div>
+                        <div className="contact-address red p-2"><span className="fw-bold">Địa chỉ: </span> <a style={{ textDecoration: "none" }} href="https://maps.app.goo.gl/JNbbHgsMtuS4Hgkx8" title="open in googlemap">345 Võ Văn Tần, Phường 05, Quận 3, Hồ Chí Minh</a>
+                        </div>
+                        <div className="contact-email red p-2">
+                            <span className="fw-bold">Email: </span><a style={{ textDecoration: "none" }} href="mailto:tuanbui2122@gmail.com" title="mail to tuanbui2122@gmail.com">Tuanbui2122@gmail.com</a>
+                        </div>
+                        <div className="contact-phone red p-2">
+                            <span className="fw-bold">Điện thoại: </span><a style={{ textDecoration: "none" }} href="tel:+8474531589" title="call 8474531589">+8474531589</a>
+                        </div>
                     </div>
                 </div>
             </div >

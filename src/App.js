@@ -8,7 +8,7 @@ function App() {
     <div className="App ">
       <header className="App-header">
       </header>
-      <Header />
+      <Header isHomePage={true} />
       <HomePage />
 
       <Footer />

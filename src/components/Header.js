@@ -1,8 +1,10 @@
 import "./header.scss"
-import { Offcanvas, OffcanvasHeader, OffcanvasBody } from 'reactstrap';
+import { BreadcrumbItem, Breadcrumb } from 'reactstrap';
 import { useState } from 'react';
+import MenuBar from "./MenuBar";
+import Cart from "./Cart";
 
-const Header = () => {
+const Header = (props) => {
     const sizeIcon = '30'
     const logoStyle = {
         borderRadius: '50%',
@@ -20,9 +22,15 @@ const Header = () => {
         // Do something when the offcanvas is toggled
         setIsOffcartOpen(!isOffcartOpen);
     };
+
     return (
         <>
-            <div className="container-fluid sticky-top bs-tertiary-bg red shadow" style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+            <div
+                className={props.isHomePage === true ? "container-fluid sticky-top bs-tertiary-bg red shadow" :
+                    "container-fluid  bs-tertiary-bg red shadow"
+
+                }
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
 
                 <div className="container ">
                     <div className="row  align-items-center">
@@ -59,41 +67,40 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* menubar here */}
+            {/* Breadcrumb */}
+
+
+            {props && props.isHomePage === false &&
+                <div className='container-fluid red bg-body-secondary'>
+
+                    <div className='container red  g-0'>
+                        <Breadcrumb listTag="div" className='mdsfasdf-2'>
+                            <BreadcrumbItem href="/" tag="a" >
+                                Home
+                            </BreadcrumbItem>
+                            <BreadcrumbItem href="#" tag="a"        >
+                                Library
+                            </BreadcrumbItem>
+                            <BreadcrumbItem href="#" tag="a"        >
+                                Data
+                            </BreadcrumbItem>
+                            <BreadcrumbItem active tag="span"     >
+                                tên product
+                            </BreadcrumbItem>
+                        </Breadcrumb>
+                    </div>
+                </div>
+            }
+
+            <MenuBar isOffcanvasOpen={isOffcanvasOpen}
+                noRefCheck={noRefCheck} />
+            <Cart
+                isOffcartOpen={isOffcartOpen}
+                cartCheck={cartCheck} />
 
 
 
 
-            <Offcanvas
-                isOpen={isOffcanvasOpen}
-                toggle={() => noRefCheck()}
-            >
-                <OffcanvasHeader toggle={() => noRefCheck()}>
-                    Offcanvas
-                </OffcanvasHeader>
-                <OffcanvasBody>
-                    <strong>
-                        This is the Offcanvas body.
-                    </strong>
-                </OffcanvasBody>
-            </Offcanvas>
-
-
-            {/* // menubả to here */}
-            <Offcanvas
-                isOpen={isOffcartOpen}
-                toggle={() => cartCheck()}
-                direction="end"
-            >
-                <OffcanvasHeader toggle={() => cartCheck()}>
-                    cart
-                </OffcanvasHeader>
-                <OffcanvasBody>
-                    <strong>
-                        This is the cart body.
-                    </strong>
-                </OffcanvasBody>
-            </Offcanvas>
         </>
     )
 }
