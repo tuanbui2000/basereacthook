@@ -2,6 +2,9 @@ import ColletionSlider from "./ColletionSlider";
 import Slider from "react-slick";
 import DisplayAllItem from "./DisplayItem";
 import ProductDetail from "./ProductDetail";
+import Shipping from "./Shipping";
+import PreservationPolicy from "./PreservationPolicy";
+import ReturnRefund from "./ReturnRefurn";
 
 const HomePage = () => {
 
@@ -111,6 +114,9 @@ const HomePage = () => {
 
             <DisplayAllItem />
             <ProductDetail />
+            <Shipping />
+            <PreservationPolicy />
+            <ReturnRefund />
         </>
     )
 

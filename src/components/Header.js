@@ -26,7 +26,7 @@ const Header = (props) => {
     return (
         <>
             <div
-                className={props.isHomePage === true ? "container-fluid sticky-top bs-tertiary-bg red shadow" :
+                className={props.isHomePage === true ? "container-fluid sticky-top  bs-tertiary-bg red shadow" :
                     "container-fluid  bs-tertiary-bg red shadow"
 
                 }
