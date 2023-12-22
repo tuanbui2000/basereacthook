@@ -3,6 +3,8 @@ import { BreadcrumbItem, Breadcrumb } from 'reactstrap';
 import { useState } from 'react';
 import MenuBar from "./MenuBar";
 import Cart from "./Cart";
+import { Link } from "react-router-dom";
+// import { redirect } from "react-router-dom";
 
 const Header = (props) => {
     const sizeIcon = '30'
@@ -23,6 +25,8 @@ const Header = (props) => {
         setIsOffcartOpen(!isOffcartOpen);
     };
 
+
+
     return (
         <>
             <div
@@ -39,9 +43,9 @@ const Header = (props) => {
                             <svg xmlns="http://www.w3.org/2000/svg" width={sizeIcon} height={sizeIcon} fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                             </svg></div>
-                        <div className=" col text-center red  ">
-                            <img className="App-logo " style={logoStyle} src={headerLogoSrc} alt="logo"></img>
-                        </div>
+                        <Link to={"/home"} className=" col text-center red  " >
+                            <img className="App-logo " style={logoStyle} src={headerLogoSrc} alt="logo" />
+                        </Link>
                         <div className=" col text-end red ">
                             <span className="  search red me-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width={sizeIcon} height={sizeIcon} fill="currentColor" className="bi bi-search-heart" viewBox="0 0 16 16">

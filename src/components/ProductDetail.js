@@ -14,7 +14,15 @@ const ProductDetail = () => {
 
 
 
+    let Picimage = {
+        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: "100%",
+        height: "100%",
 
+
+    }
 
     return (
         <>
@@ -24,14 +32,16 @@ const ProductDetail = () => {
                 <div className="row red g-0">
 
                     <div className="col-1 row g-0 red my-3">
-                        <div className="col-12 red ">small picture</div>
-                        <div className="col-12 red ">small picture</div>
-                        <div className="col-12 red ">small picture</div>
-                        <div className="col-12 red ">small picture</div>
-                        <div className="col-12 red ">small picture</div>
+                        <div className="col red  p-2 " >  <div className="red " style={Picimage}></div>  </div>
+                        <div className="col red  " style={Picimage}> </div>
+                        <div className="col red  " style={Picimage}> </div>
+                        <div className="col red  " style={Picimage}> </div>
+                        <div className="col red  " style={Picimage}> </div>
+
+
                     </div>
-                    <div className="col-5 red">large picture</div>
-                    <div className="col-6 red">
+                    <div className="col-5 red p-2" ><div className="red " style={Picimage}></div></div>
+                    <div className="col-6 red p-2">
                         <div className="red "> vendor</div>
                         <div className="red"> product name</div>
                         <div className="red "> price</div>

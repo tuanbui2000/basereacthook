@@ -1,24 +1,33 @@
-import { Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { useState } from 'react';
 
 
 const DisplayAllItem = () => {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [listItem, setlistItem] = useState([
 
-    const toggle = () => setDropdownOpen((prevState) => !prevState);
+        { name: "jean", price: "100" },
+        { name: "skirt", price: "200" },
+        { name: "skirt", price: "200" },
+        { name: "skirt", price: "200" },
+        { name: "skirt", price: "200" },
+        { name: "coat", price: "300" },
+        { name: "jacket", price: "1500" },
+        { name: "other", price: "1300" }
+    ]);
 
-    const dropdownitem = [
-        { category: "action1", linkto: "#" },
-        { category: "action2", linkto: "#" },
-        { category: "action3", linkto: "#" },
-        { category: "action4", linkto: "#" },
-    ]
-
-    let listDropdown = dropdownitem.map((item, index) => {
-        return (
-            <DropdownItem key={index}> {item.category}</DropdownItem>
-        )
-    })
+    // const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const toggle = () => setDropdownOpen((prevState) => !prevState);
+    // const dropdownitem = [
+    //     { category: "action1", linkto: "#" },
+    //     { category: "action2", linkto: "#" },
+    //     { category: "action3", linkto: "#" },
+    //     { category: "action4", linkto: "#" },
+    // ]
+    // let listDropdown = dropdownitem.map((item, index) => {
+    //     return (
+    //         <DropdownItem key={index}> {item.category}</DropdownItem>
+    //     )
+    // })
 
     const collectionStyle = {
         height: "50vh",
@@ -30,20 +39,9 @@ const DisplayAllItem = () => {
     }
 
 
-    const listItem = [
-
-        { name: "jean", price: "100" },
-        { name: "skirt", price: "200" },
-        { name: "skirt", price: "200" },
-        { name: "skirt", price: "200" },
-        { name: "skirt", price: "200" },
-        { name: "coat", price: "300" },
-        { name: "jacket", price: "1500" },
-        { name: "other", price: "1300" },
-    ]
-
-
-
+    const handleSeeMore = () => {
+        setlistItem([...listItem, ...listItem])
+    }
 
 
     return (
@@ -52,28 +50,53 @@ const DisplayAllItem = () => {
         <div className="container-fluid g-0">
 
             <div className='container red '>
-                <div className=' red  text-center'>
-                    <h3>productname</h3>
-                    <p> some discription</p>
+                <div className=' red  justify-content-center row text-center'>
+                    <div className='col-8'>
+                        <h2>productname</h2>
+
+
+                        <p >
+                            Luôn giữ cho mình một diện mạo thời thượng dù ở bất kỳ nơi nào chính là cách các F*ck Girls tạo ra sức hút đặc biệt rất riêng của mình.
+                        </p>
+                        <p >
+                            some description some description
+                            some description some description some description   some description some description some description some description some description some description some description some description some description some description some description                       </p>
+                        <p >
+                            some description some description some description some description some description
+                        </p>     ______________
+                        <p> some discription</p>
+                    </div>
                 </div>
 
 
-                <div className=" red filter row">
-                    <div className="red col-2">
-                        <div className="d-flex ">
-                            <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                                <DropdownToggle caret>Dropdown</DropdownToggle>
+                <div className=" red filter row   border border-secondary">
+                    <div className="red col-2 border">
+                        <div className="d-flex  my-1">
+                            {/* <Dropdown isOpen={dropdownOpen} toggle={toggle} >
+                                <DropdownToggle caret>filter1</DropdownToggle>
                                 <DropdownMenu >
                                     <DropdownItem header>Header</DropdownItem>
                                     {listDropdown}
                                 </DropdownMenu>
-                            </Dropdown>
+                            </Dropdown> */}
+                            filter1
+                        </div>
+                    </div>
+                    <div className="red col-2 border">
+                        <div className="d-flex my-1">
+                            filter2
+                        </div>
+                    </div>
+                    <div className="red col-2 border ">
+                        <div className="d-flex my-1">
+                            filter3
                         </div>
                     </div>
 
 
                 </div>
                 <div className='red row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5'>
+
                     {listItem.map((item, index) => {
                         return (
                             <div className="red " style={{ padding: "10px" }} key={index} >
@@ -95,7 +118,7 @@ const DisplayAllItem = () => {
                     })}
                 </div>
                 <div className='text-center p-2'>
-                    <Button> See more</Button>
+                    <Button onClick={() => handleSeeMore()}> See more</Button>
 
                 </div>
             </div>

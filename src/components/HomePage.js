@@ -1,10 +1,6 @@
+import { Link } from "react-router-dom";
 import ColletionSlider from "./ColletionSlider";
 import Slider from "react-slick";
-import DisplayAllItem from "./DisplayItem";
-import ProductDetail from "./ProductDetail";
-import Shipping from "./Shipping";
-import PreservationPolicy from "./PreservationPolicy";
-import ReturnRefund from "./ReturnRefurn";
 
 const HomePage = () => {
 
@@ -34,7 +30,7 @@ const HomePage = () => {
         backgroundImage: 'url(https://source.unsplash.com/random)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        margin: "10px"
+
     }
 
     const images = [
@@ -74,10 +70,10 @@ const HomePage = () => {
                     {/* title collection  */}
 
                     <div className="title red text-center m-4 h3 fw-bold"> COLLECTION OF TUNS</div>
-                    <div className=" colection row g-0 gap-3 my-3  red">
-                        <div className="col red text-center" style={collectionStyle} ></div>
-                        <div className="col red text-center" style={collectionStyle} ></div>
-                        <div className="col red text-center" style={collectionStyle} ></div>
+                    <div className=" colection row g-0  my-3  red">
+                        <div className="col red text-center p-2  col-12 col-md-4  col-sm-6" > <div style={collectionStyle} ></div> </div>
+                        <div className="col red text-center p-2  col-12 col-md-4  col-sm-6" > <div style={collectionStyle} ></div> </div>
+                        <div className="col red text-center p-2  col-12 col-md-4  col-sm-6" > <div style={collectionStyle} ></div> </div>
 
 
                     </div>
@@ -87,14 +83,14 @@ const HomePage = () => {
                             <div className="image red m-3 text-center" style={collectionStyle} ></div>
                             <div>
                                 <div className="title h2 red">tên collection</div>
-                                <button className="see-more-btn red btn btn-secondary">see more</button>
+                                <Link to={"/all-item"} className="see-more-btn red btn btn-secondary">see more</Link>
                             </div>
                         </div>
-                        <div className="col m-3 red " >
+                        <div className="col m-3  red " >
                             <div>
 
                                 <div className="title h2 red">colletion name</div>
-                                <button className="see-more-btn red btn btn-secondary">see more</button>
+                                <Link to={"/all-item"} className="see-more-btn red btn btn-secondary">see more</Link>
                             </div>
                             <div className="image red m-3 text-center" style={collectionStyle} ></div>
                         </div>
@@ -112,11 +108,7 @@ const HomePage = () => {
                 </div>
             </div >
 
-            <DisplayAllItem />
-            <ProductDetail />
-            <Shipping />
-            <PreservationPolicy />
-            <ReturnRefund />
+
         </>
     )
 

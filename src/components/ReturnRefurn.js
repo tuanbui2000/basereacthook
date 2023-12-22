@@ -2,7 +2,7 @@
 const ReturnRefund = () => {
     return (
         <>
-            <div className="red container">
+            <div className="red mt-3 mb-5 container">
                 <h5>Chính sách đổi trả</h5>
                 <ul>
                     <li>    Khi nhận hàng và mở gói hàng, quý khách vui lòng quay lại video khui sản phẩm để Shop hỗ trợ sản phẩm khi có vấn đề phát sinh (sản phẩm lỗi/rách/thiếu sản phẩm)

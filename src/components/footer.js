@@ -1,6 +1,5 @@
 import "./footer.scss"
-
-
+import { Link, } from "react-router-dom";
 
 const footer = () => {
     const featureStyle =
@@ -13,6 +12,9 @@ const footer = () => {
         width: '100px',
         height: '100px'
     }
+
+
+
 
     return (
         <><div className="container-fluid gx-0">
@@ -69,7 +71,10 @@ const footer = () => {
 
                 <div className=" mt-3 row gx-0 red ">
                     <div className="about col-4 red ">
-                        <div className="title-logo red fw-bold text-center  " > <img style={footerLogoStyle} className="App-logo " src={LogoSrc} alt="logo"></img>
+                        <div className="title-logo red fw-bold text-center  " > <Link to={"/home"} >
+                            <img style={footerLogoStyle} className="App-logo " src={LogoSrc} alt="logo" />
+                        </Link>
+
                         </div>
                         <div className="description red" >Thương hiệu thiết kế thời trang Larmes với phong cách sang trọng, tinh tế cùng nàng diện từ công sở đến các buổi tiệc sang trọng. — Elegant and trendy women's fashion boutique in Saigon District 3</div>
                         <div className="social-media row gx-0 red p-1 ">
@@ -90,9 +95,15 @@ const footer = () => {
                     </div>
                     <div className="services col-4 red ps-3">
                         <div className="service-title red fw-bold pt-3 row g-0 p-2 ">Dịch vụ khách hàng</div>
-                        <div className="guideline1 red col p-2" style={{ cursor: "pointer" }} >Hướng dẫn bảo quản sản phẩm</div>
-                        <div className="guideline2 red col p-2 " style={{ cursor: "pointer" }}>Chính sách vận chuyển</div>
-                        <div className="guideline3 red col p-2" style={{ cursor: "pointer" }}>Chính sách đổi trả</div>
+                        <div className="guideline1 red col p-2" style={{ cursor: "pointer" }} >
+                            <Link style={{ textDecoration: "none", color: "black" }} to="/preventation-policy" >Hướng dẫn bảo quản sản phẩm</Link></div>
+                        <div className="guideline2 red col p-2 " style={{ cursor: "pointer" }}>
+                            <Link style={{ textDecoration: "none", color: "black" }} to="/shipping-policy" >Chính sách vận chuyển</Link>
+                        </div>
+                        <div className="guideline3 red col p-2" style={{ cursor: "pointer" }}>
+                            <Link style={{ textDecoration: "none", color: "black" }} to="/return-refund-policy" >Chính sách đổi trả</Link>
+                        </div>
+
                     </div>
                     <div className="contact col-4 red ">
                         <div className="contact-title red fw-bold pt-3 p-2">Liên hệ với chúng tôi</div>
@@ -111,6 +122,7 @@ const footer = () => {
             <div className="copyright pt-1 mt-5">
                 © Bản quyền thuộc về tún Official | Cung cấp bởi Tún
             </div>
+
 
         </div >
 

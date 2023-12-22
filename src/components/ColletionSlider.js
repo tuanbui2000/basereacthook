@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Card, CardBody } from "reactstrap";
 
@@ -34,6 +35,9 @@ const ColletionSlider = (props) => {
         { alt: 'Sample', src: 'https://picsum.photos/300/200' },
         { alt: 'Sample', src: 'https://picsum.photos/300/200' },
     ];
+
+
+
 
 
 
@@ -84,7 +88,7 @@ const ColletionSlider = (props) => {
 
 
                     </div>
-                    <div className="red btn btn-secondary mt-2 mb-3 btn-sm"> see more</div>
+                    <Link to={"/all-item"} className="red btn btn-secondary mt-2 mb-3 btn-sm"> see more</Link>
                 </div>
             </div>
 
