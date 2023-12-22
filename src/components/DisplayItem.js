@@ -1,5 +1,6 @@
 import { Button } from 'reactstrap';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const DisplayAllItem = () => {
@@ -34,7 +35,7 @@ const DisplayAllItem = () => {
         backgroundImage: 'url(https://source.unsplash.com/random)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        margin: "10px",
+        // margin: "10px",
 
     }
 
@@ -99,8 +100,11 @@ const DisplayAllItem = () => {
 
                     {listItem.map((item, index) => {
                         return (
+
                             <div className="red " style={{ padding: "10px" }} key={index} >
-                                <div style={collectionStyle}></div>
+                                <Link to={"/detail-item"} style={{ textDecoration: "None" }}>
+                                    <div style={collectionStyle}></div>
+                                </Link>
                                 <div>
                                     <div className="red " style={{ display: "flex", justifyContent: "space-between" }}>
                                         <span className="text-danger fw-bold">${item.price}</span>
@@ -110,10 +114,14 @@ const DisplayAllItem = () => {
                                                 <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" /></svg>
                                         </span>
                                     </div>
-                                    <div className="red h5 fw-semibold">{item.name}</div>
+                                    <Link to={"/detail-item"} style={{ textDecoration: "None", color: "black" }}>
+
+                                        <div className="red h5 fw-semibold">{item.name}</div>
+                                    </Link>
                                     <div className="red">color</div>
                                 </div>
                             </div>
+
                         )
                     })}
                 </div>

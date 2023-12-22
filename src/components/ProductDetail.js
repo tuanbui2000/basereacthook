@@ -13,6 +13,10 @@ const ProductDetail = () => {
     };
 
 
+    // useEffect(() => {
+    //     // Thực hiện cuộn về đầu trang khi component được render
+    //     window.scrollTo({ top: 0, behavior: 'auto' });
+    // }, []);
 
     let Picimage = {
         backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -23,6 +27,17 @@ const ProductDetail = () => {
 
 
     }
+    let miniPicimage = {
+        marginTop: "10px",
+        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: "100px",
+        height: "100px",
+
+
+    }
+
 
     return (
         <>
@@ -31,12 +46,12 @@ const ProductDetail = () => {
             <div className="container red g-0  my-3">
                 <div className="row red g-0">
 
-                    <div className="col-1 row g-0 red my-3">
-                        <div className="col red  p-2 " >  <div className="red " style={Picimage}></div>  </div>
-                        <div className="col red  " style={Picimage}> </div>
-                        <div className="col red  " style={Picimage}> </div>
-                        <div className="col red  " style={Picimage}> </div>
-                        <div className="col red  " style={Picimage}> </div>
+                    <div className="col-1  g-0 red my-3">
+                        <div className=" red " style={miniPicimage}> </div>
+                        <div className=" red " style={miniPicimage}> </div>
+                        <div className=" red " style={miniPicimage}> </div>
+                        <div className=" red " style={miniPicimage}> </div>
+                        <div className=" red " style={miniPicimage}> </div>
 
 
                     </div>
