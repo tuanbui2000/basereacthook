@@ -4,6 +4,15 @@ import { useState } from "react";
 
 const ProductDetail = () => {
     const [open, setOpen] = useState('1');
+    const [color, setColor] = useState([
+        { abb: "R", color: " #dc3545" },
+        { abb: "G", color: "#198754" },
+        { abb: "B", color: "#0d6efd" }
+    ])
+    const [CSelected, setCSelected] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+    const [sSelected, setSSelected] = useState(null);
+    const [size, setSize] = useState([{ abb: "S" }, { abb: "M" }, { abb: "L" }]);
     const toggle = (id) => {
         if (open === id) {
             setOpen();
@@ -12,11 +21,23 @@ const ProductDetail = () => {
         }
     };
 
+    let sizeItem = size.map((item, index) => {
+        return (
+            <Button className='me-1' outline onClick={() => setSSelected(item.abb)} active={sSelected === item.abb}>
+                {item.abb}
+            </Button>
+        )
+    })
 
-    // useEffect(() => {
-    //     // Thực hiện cuộn về đầu trang khi component được render
-    //     window.scrollTo({ top: 0, behavior: 'auto' });
-    // }, []);
+
+    const colorItem = color.map((item, index) => {
+        return (
+            <Button className='me-1' outline onClick={() => setCSelected(item.abb)} active={CSelected === item.abb} style={CSelected === item.abb ? { background: item.color, color: "white" } : {}}>
+                {item.abb}
+            </Button>
+        )
+    })
+
 
     let Picimage = {
         backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -39,6 +60,7 @@ const ProductDetail = () => {
     }
 
 
+
     return (
         <>
 
@@ -57,47 +79,28 @@ const ProductDetail = () => {
                     </div>
                     <div className="col-5 red p-2" ><div className="red " style={Picimage}></div></div>
                     <div className="col-6 red p-2">
-                        <div className="red "> vendor</div>
-                        <div className="red"> product name</div>
-                        <div className="red "> price</div>
-                        <div className="red "> size</div>
+                        <div className="red display-5 ">  <em> vendor </em></div>
+                        <div className="red h1 "> product name </div>
+                        <div className="red text-danger  h3"> $169</div>
+                        <div className="red h6"> size</div>
                         <div className="red ">
-                            {/* <ButtonGroup> */}
-                            <Button color="primary" outline  >
-                                S
-                            </Button>
-                            <Button color="primary" outline    >
-                                M
-                            </Button>
-                            <Button
-                                color="primary" outline   >
-                                L
-                            </Button>
-                            {/* </ButtonGroup> */}
+
+                            {sizeItem}
+
                         </div>
-                        <div className="red "> color</div>
+                        <div className="red h6 "> color</div>
                         <div className="red ">
-                            <Button color="primary" outline  >
-                                red
-                            </Button>
-                            <Button color="primary" outline    >
-                                Blue
-                            </Button>
-                            <Button
-                                color="primary" outline   >
-                                White
-                            </Button>
+                            {colorItem}
                         </div>
                         <div className="red my-3 ">
-                            <ButtonGroup>
-                                <Button color="primary" outline  >
+                            <ButtonGroup >
+                                <Button outline color="dark" onClick={() => setQuantity(quantity > 1 ? quantity - 1 : quantity)} disabled={quantity <= 1}>
                                     -
                                 </Button>
-                                <Button color="primary" outline    >
-                                    1
+                                <Button outline color="dark" disabled={true} active>
+                                    {quantity}
                                 </Button>
-                                <Button
-                                    color="primary" outline   >
+                                <Button outline color="dark" onClick={() => setQuantity(quantity + 1)}   >
                                     +
                                 </Button>
                             </ButtonGroup>
@@ -113,8 +116,27 @@ const ProductDetail = () => {
                                 <AccordionItem>
                                     <AccordionHeader targetId="1">product description</AccordionHeader>
                                     <AccordionBody accordionId="1">
-                                        <strong>Chưa có cl gì cả</strong>
 
+                                        <strong>This is the third item&#39;s accordion body.</strong>
+                                        You can modify any of this with custom CSS or overriding our default
+                                        variables. It&#39;s also worth noting that just about any HTML can
+                                        go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.
+
+
+                                        <strong>This is the third item&#39;s accordion body.</strong>
+                                        You can modify any of this with custom CSS or overriding our default
+                                        variables. It&#39;s also worth noting that just about any HTML can
+                                        go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.     <strong>This is the third item&#39;s accordion body.</strong>
+                                        You can modify any of this with custom CSS or overriding our default
+                                        variables. It&#39;s also worth noting that just about any HTML can
+                                        go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.     <strong>This is the third item&#39;s accordion body.</strong>
+                                        You can modify any of this with custom CSS or overriding our default
+                                        variables. It&#39;s also worth noting that just about any HTML can
+                                        go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.
                                     </AccordionBody>
                                 </AccordionItem>
                                 <AccordionItem>

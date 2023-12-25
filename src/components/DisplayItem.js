@@ -1,22 +1,30 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PagePagination from './Paging/PagePagination';
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 
 
 
 const DisplayAllItem = () => {
     const [listItem, setlistItem] = useState([
-        { name: "jean", price: "100" },
-        { name: "skirt", price: "200" },
-        { name: "skirt", price: "200" },
-        { name: "skirt", price: "200" },
-        { name: "skirt", price: "200" },
-        { name: "coat", price: "300" },
-        { name: "coat", price: "300" },
-        { name: "coat", price: "300" },
-        { name: "jacket", price: "1500" },
-        { name: "other", price: "1300" }
+        { id: "1", name: "jean", price: "100" },
+        { id: "2", name: "skirt", price: "200" },
+        { id: "3", name: "skirt", price: "200" },
+        { id: "4", name: "skirt", price: "200" },
+        { id: "5", name: "skirt", price: "200" },
+        { id: "6", name: "coat", price: "300" },
+        { id: "7", name: "coat", price: "300" },
+        { id: "8", name: "coat", price: "300" },
+        { id: "9", name: "jacket", price: "1500" },
+        { id: "10", name: "other", price: "1300" }
     ]);
+
+    const [color, setColor] = useState([
+        { abb: "R" }, { abb: "G" }, { abb: "B" }
+    ])
+
+    const [rSelected, setRSelected] = useState(null);
+
 
 
 
@@ -29,6 +37,11 @@ const DisplayAllItem = () => {
         // margin: "10px",
 
     }
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggle = () => setDropdownOpen((prevState) => !prevState);
+
 
 
 
@@ -56,19 +69,53 @@ const DisplayAllItem = () => {
 
                 <div className=" red filter row   border border-secondary">
                     <div className="red col-2 border">
-                        <div className="d-flex  my-1">
-                            filter1
-                        </div>
+
+
+                        <Dropdown isOpen={dropdownOpen} toggle={toggle} className='row' >
+                            <DropdownToggle className='col-12' caret outline>sắp xếp theo</DropdownToggle>
+                            <DropdownMenu >
+
+                                <DropdownItem>Some Action</DropdownItem>
+                                <DropdownItem>Foo Action</DropdownItem>
+                                <DropdownItem>Bar Action</DropdownItem>
+                                <DropdownItem>Quo Action</DropdownItem>
+                            </DropdownMenu>
+
+
+                        </Dropdown>
+
+
+
                     </div>
                     <div className="red col-2 border">
-                        <div className="d-flex my-1">
-                            filter2
-                        </div>
+                        <Dropdown isOpen={dropdownOpen} toggle={toggle} className='row' >
+                            <DropdownToggle className='col-12' caret outline>price</DropdownToggle>
+                            <DropdownMenu >
+
+                                <DropdownItem>Some Action</DropdownItem>
+                                <DropdownItem>Foo Action</DropdownItem>
+                                <DropdownItem>Bar Action</DropdownItem>
+                                <DropdownItem>Quo Action</DropdownItem>
+                            </DropdownMenu>
+
+
+                        </Dropdown>
+
+
                     </div>
                     <div className="red col-2 border ">
-                        <div className="d-flex my-1">
-                            filter3
-                        </div>
+                        <Dropdown isOpen={dropdownOpen} toggle={toggle} className='row' >
+                            <DropdownToggle className='col-12' caret outline>kind</DropdownToggle>
+                            <DropdownMenu >
+
+                                <DropdownItem>Some Action</DropdownItem>
+                                <DropdownItem>Foo Action</DropdownItem>
+                                <DropdownItem>Bar Action</DropdownItem>
+                                <DropdownItem>Quo Action</DropdownItem>
+                            </DropdownMenu>
+
+
+                        </Dropdown>
                     </div>
 
 
@@ -95,7 +142,19 @@ const DisplayAllItem = () => {
 
                                         <div className="red h5 fw-semibold">{item.name}</div>
                                     </Link>
-                                    <div className="red">color</div>
+                                    <div className="red">
+
+                                        {color.map((itemcolor, index) => {
+                                            return (
+                                                <Button key={index} className='me-1' outline onClick={() => setRSelected(item.id + itemcolor.abb)} active={rSelected === item.id + itemcolor.abb}>
+                                                    {itemcolor.abb}
+                                                </Button>
+                                            )
+                                        })}
+
+
+
+                                    </div>
                                 </div>
                             </div>
 
