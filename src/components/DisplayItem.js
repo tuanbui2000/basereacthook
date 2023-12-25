@@ -1,34 +1,25 @@
-import { Button } from 'reactstrap';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PagePagination from './Paging/PagePagination';
+
 
 
 const DisplayAllItem = () => {
     const [listItem, setlistItem] = useState([
-
         { name: "jean", price: "100" },
         { name: "skirt", price: "200" },
         { name: "skirt", price: "200" },
         { name: "skirt", price: "200" },
         { name: "skirt", price: "200" },
         { name: "coat", price: "300" },
+        { name: "coat", price: "300" },
+        { name: "coat", price: "300" },
         { name: "jacket", price: "1500" },
         { name: "other", price: "1300" }
     ]);
 
-    // const [dropdownOpen, setDropdownOpen] = useState(false);
-    // const toggle = () => setDropdownOpen((prevState) => !prevState);
-    // const dropdownitem = [
-    //     { category: "action1", linkto: "#" },
-    //     { category: "action2", linkto: "#" },
-    //     { category: "action3", linkto: "#" },
-    //     { category: "action4", linkto: "#" },
-    // ]
-    // let listDropdown = dropdownitem.map((item, index) => {
-    //     return (
-    //         <DropdownItem key={index}> {item.category}</DropdownItem>
-    //     )
-    // })
+
+
 
     const collectionStyle = {
         height: "50vh",
@@ -40,22 +31,15 @@ const DisplayAllItem = () => {
     }
 
 
-    const handleSeeMore = () => {
-        setlistItem([...listItem, ...listItem])
-    }
 
 
     return (
-
-
         <div className="container-fluid g-0">
 
             <div className='container red '>
                 <div className=' red  justify-content-center row text-center'>
                     <div className='col-8'>
                         <h2>productname</h2>
-
-
                         <p >
                             Luôn giữ cho mình một diện mạo thời thượng dù ở bất kỳ nơi nào chính là cách các F*ck Girls tạo ra sức hút đặc biệt rất riêng của mình.
                         </p>
@@ -73,13 +57,6 @@ const DisplayAllItem = () => {
                 <div className=" red filter row   border border-secondary">
                     <div className="red col-2 border">
                         <div className="d-flex  my-1">
-                            {/* <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                                <DropdownToggle caret>filter1</DropdownToggle>
-                                <DropdownMenu >
-                                    <DropdownItem header>Header</DropdownItem>
-                                    {listDropdown}
-                                </DropdownMenu>
-                            </Dropdown> */}
                             filter1
                         </div>
                     </div>
@@ -125,9 +102,10 @@ const DisplayAllItem = () => {
                         )
                     })}
                 </div>
-                <div className='text-center p-2'>
-                    <Button onClick={() => handleSeeMore()}> See more</Button>
-
+                <div className='justify-content-center mt-5 row p-2'>
+                    <div className='red col-auto '>
+                        <PagePagination />
+                    </div>
                 </div>
             </div>
 

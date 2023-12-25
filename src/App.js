@@ -1,14 +1,14 @@
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/footer';
 import HomePage from './components/HomePage';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, } from "react-router-dom";
 import ProductDetail from './components/ProductDetail';
 import PreservationPolicy from './components/PreservationPolicy';
-import Shipping from './components/Shipping';
-import ReturnRefund from './components/ReturnRefurn';
+import Shipping from './components/Footer/Shipping';
 import DisplayAllItem from './components/DisplayItem';
 import { useLayoutEffect } from 'react';
+import ReturnRefund from './components/Footer/ReturnRefurn';
 
 function App() {
 
@@ -20,12 +20,8 @@ function App() {
     }, [location.pathname]);
     return children
   }
-
-
   return (
-
     <>
-
       <BrowserRouter>
         <Wrapper>
           <Header isHomePage={true} />
@@ -42,12 +38,9 @@ function App() {
           <Footer />
         </Wrapper>
       </BrowserRouter>
-
       <div className="App ">
         <header className="App-header">
         </header>
-
-
       </div>
     </>
   );
