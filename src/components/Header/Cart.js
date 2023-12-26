@@ -1,16 +1,21 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasBody, ButtonGroup, Button } from 'reactstrap';
 
 
 
 const Cart = (props) => {
-    const [cartItem, setCartItem] = useState([
-        { name: "item1", price: "100", color: " red", size: " M" },
-        { name: "item2", price: "100", color: " red", size: " M" },
-        { name: "item3", price: "100", color: " red", size: " M" },
-        { name: "item4", price: "100", color: " red", size: " M" },
-    ])
+
+
+    let FakecartItem = [
+        { id: 1, name: "item1", price: "100", color: " red", size: " M" },
+        { id: 2, name: "item2", price: "100", color: " red", size: " M" },
+        { id: 3, name: "item3", price: "100", color: " red", size: " M" },
+        { id: 4, name: "item4", price: "100", color: " red", size: " M" },
+    ]
+
+
+    const [cartItem, setCartItem] = useState(FakecartItem)
     const [quantity, setQuantity] = useState(1);
 
 
@@ -21,8 +26,12 @@ const Cart = (props) => {
         width: "100%",
         height: "100%",
 
-
     }
+    useEffect(() => {
+        const { setCartCurrentCount } = props;
+        setCartCurrentCount(cartItem.length);
+    }, [cartItem, props.setCartCurrentCount]);
+
 
 
 
@@ -54,7 +63,7 @@ const Cart = (props) => {
                     </div>
                     <div className='col-6 text-end red '>
                         <div className=' text-danger h6 red pe-3'> {item.price}</div>
-                        <div className='red pe-1'> remove</div>
+                        <Button className='red py-0 px-1 ' color='dark' onClick={() => removeItemFromCart(item.id)}> remove</Button>
                     </div>
 
                 </div>
@@ -62,7 +71,11 @@ const Cart = (props) => {
         )
     })
 
+    const removeItemFromCart = (idToDelete) => {
+        const newArray = cartItem.filter(item => item.id !== idToDelete)
 
+        setCartItem(newArray)
+    }
 
     let isOffcartOpen = props.isOffcartOpen;
     return (
@@ -76,10 +89,7 @@ const Cart = (props) => {
                     cart
                 </OffcanvasHeader>
                 <OffcanvasBody>
-
                     {displayCartItem}
-
-
                 </OffcanvasBody>
 
 

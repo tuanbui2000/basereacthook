@@ -25,7 +25,7 @@ const Header = (props) => {
         setIsOffcartOpen(!isOffcartOpen);
     };
 
-
+    const [cartCurrentCount, setCartCurrentCount] = useState(5);
 
     return (
         <>
@@ -70,7 +70,7 @@ const Header = (props) => {
                                 </svg>
 
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    9
+                                    {cartCurrentCount}
 
                                     <span className="visually-hidden">cart</span>
                                 </span>
@@ -109,7 +109,9 @@ const Header = (props) => {
                 noRefCheck={noRefCheck} />
             <Cart
                 isOffcartOpen={isOffcartOpen}
-                cartCheck={cartCheck} />
+                cartCheck={cartCheck}
+                setCartCurrentCount={setCartCurrentCount}
+            />
 
 
 

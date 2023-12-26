@@ -6,6 +6,12 @@
   /* border: 1px solid red; */
 }
 
+.filter-btn {
+  border: none !important;
+}
+
+
+
 .breadcrumb {
   padding: 0.5rem !important;
 }

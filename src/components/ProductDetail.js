@@ -23,7 +23,7 @@ const ProductDetail = () => {
 
     let sizeItem = size.map((item, index) => {
         return (
-            <Button className='me-1' outline onClick={() => setSSelected(item.abb)} active={sSelected === item.abb}>
+            <Button key={index} className='me-1' outline onClick={() => setSSelected(item.abb)} active={sSelected === item.abb}>
                 {item.abb}
             </Button>
         )
@@ -32,7 +32,7 @@ const ProductDetail = () => {
 
     const colorItem = color.map((item, index) => {
         return (
-            <Button className='me-1' outline onClick={() => setCSelected(item.abb)} active={CSelected === item.abb} style={CSelected === item.abb ? { background: item.color, color: "white" } : {}}>
+            <Button className='me-1' key={index} outline onClick={() => setCSelected(item.abb)} active={CSelected === item.abb} style={CSelected === item.abb ? { background: item.color, color: "white" } : {}}>
                 {item.abb}
             </Button>
         )
@@ -97,7 +97,7 @@ const ProductDetail = () => {
                                 <Button outline color="dark" onClick={() => setQuantity(quantity > 1 ? quantity - 1 : quantity)} disabled={quantity <= 1}>
                                     -
                                 </Button>
-                                <Button outline color="dark" disabled={true} active>
+                                <Button outline color="dark" style={{ pointerEvents: "none", fontWeight: "600" }}>
                                     {quantity}
                                 </Button>
                                 <Button outline color="dark" onClick={() => setQuantity(quantity + 1)}   >
@@ -116,23 +116,7 @@ const ProductDetail = () => {
                                 <AccordionItem>
                                     <AccordionHeader targetId="1">product description</AccordionHeader>
                                     <AccordionBody accordionId="1">
-
                                         <strong>This is the third item&#39;s accordion body.</strong>
-                                        You can modify any of this with custom CSS or overriding our default
-                                        variables. It&#39;s also worth noting that just about any HTML can
-                                        go within the <code>.accordion-body</code>, though the transition
-                                        does limit overflow.
-
-
-                                        <strong>This is the third item&#39;s accordion body.</strong>
-                                        You can modify any of this with custom CSS or overriding our default
-                                        variables. It&#39;s also worth noting that just about any HTML can
-                                        go within the <code>.accordion-body</code>, though the transition
-                                        does limit overflow.     <strong>This is the third item&#39;s accordion body.</strong>
-                                        You can modify any of this with custom CSS or overriding our default
-                                        variables. It&#39;s also worth noting that just about any HTML can
-                                        go within the <code>.accordion-body</code>, though the transition
-                                        does limit overflow.     <strong>This is the third item&#39;s accordion body.</strong>
                                         You can modify any of this with custom CSS or overriding our default
                                         variables. It&#39;s also worth noting that just about any HTML can
                                         go within the <code>.accordion-body</code>, though the transition
@@ -140,22 +124,8 @@ const ProductDetail = () => {
                                     </AccordionBody>
                                 </AccordionItem>
                                 <AccordionItem>
-                                    <AccordionHeader targetId="2">brand description</AccordionHeader>
+                                    <AccordionHeader targetId="2">Usage</AccordionHeader>
                                     <AccordionBody accordionId="2">
-                                        <strong>Chưa có cl gì cả</strong>
-
-                                    </AccordionBody>
-                                </AccordionItem>
-                                <AccordionItem>
-                                    <AccordionHeader targetId="3">Return and refund</AccordionHeader>
-                                    <AccordionBody accordionId="3">
-                                        <strong>Chưa có cl gì cả</strong>
-
-                                    </AccordionBody>
-                                </AccordionItem>
-                                <AccordionItem>
-                                    <AccordionHeader targetId="4">storage instructions</AccordionHeader>
-                                    <AccordionBody accordionId="4">
                                         <strong>Chưa có cl gì cả</strong>
 
                                     </AccordionBody>
