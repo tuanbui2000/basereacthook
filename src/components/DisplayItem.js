@@ -24,7 +24,9 @@ const DisplayAllItem = () => {
     ]);
 
     const [color, setColor] = useState([
-        { abb: "R" }, { abb: "G" }, { abb: "B" }
+        { abb: "R", color: " #dc3545" },
+        { abb: "G", color: "#198754" },
+        { abb: "B", color: "#0d6efd" }
     ])
 
     const [rSelected, setRSelected] = useState(null);
@@ -139,7 +141,7 @@ const DisplayAllItem = () => {
 
                                         {color.map((itemcolor, index) => {
                                             return (
-                                                <Button key={index} className='me-1' outline onClick={() => setRSelected(item.id + itemcolor.abb)} active={rSelected === item.id + itemcolor.abb}>
+                                                <Button key={index} className='me-1' outline onClick={() => setRSelected(item.id + itemcolor.abb)} active={rSelected === item.id + itemcolor.abb} style={rSelected === item.id + itemcolor.abb ? { background: itemcolor.color, color: "white" } : {}}>
                                                     {itemcolor.abb}
                                                 </Button>
                                             )

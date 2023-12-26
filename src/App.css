@@ -10,7 +10,18 @@
   border: none !important;
 }
 
+.accordion-body:hover,
+.accordion-collapse:hover {
+  text-decoration: underline;
+}
 
+.accordion {
+  --bs-accordion-btn-focus-border-color: none !important;
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0 !important;
+  --bs-accordion-active-bg: #000000 !important;
+  --bs-accordion-active-color: #ffffff !important;
+
+}
 
 .breadcrumb {
   padding: 0.5rem !important;
