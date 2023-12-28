@@ -1,7 +1,7 @@
 import "./footer.scss"
-import { Link, } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const footer = () => {
+const Footer = () => {
     const featureStyle =
         "  col-3 red  row gx-0"
     const size = "50"
@@ -13,6 +13,12 @@ const footer = () => {
         height: '100px'
     }
 
+
+    let navigate = useNavigate();
+
+    const handleOnclick = (link) => {
+        navigate(`${link}`);
+    }
 
 
 
@@ -76,7 +82,7 @@ const footer = () => {
                         </Link>
 
                         </div>
-                        <div className="description red" >Thương hiệu thiết kế thời trang Larmes với phong cách sang trọng, tinh tế cùng nàng diện từ công sở đến các buổi tiệc sang trọng. — Elegant and trendy women's fashion boutique in Saigon District 3</div>
+                        <div className="description red" >Thương hiệu thiết kế thời trang Tún với phong cách sang trọng, tinh tế cùng nàng diện từ công sở đến các buổi tiệc sang trọng. — Elegant and trendy women's fashion boutique in Saigon District</div>
                         <div className="social-media row gx-0 red p-1 ">
                             <svg xmlns="http://www.w3.org/2000/svg" width={sizeMedia} height={sizeMedia} fill="currentColor" className="red icon-fb col-2 bi bi-facebook" viewBox="0 0 16 16">
                                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
@@ -95,19 +101,19 @@ const footer = () => {
                     </div>
                     <div className="services col-4 red ps-3">
                         <div className="service-title red fw-bold pt-3 row g-0 p-2 ">Dịch vụ khách hàng</div>
-                        <div className="guideline1 red col p-2" style={{ cursor: "pointer" }} >
-                            <Link style={{ textDecoration: "none", color: "black" }} to="/preventation-policy" >Hướng dẫn bảo quản sản phẩm</Link></div>
-                        <div className="guideline2 red col p-2 " style={{ cursor: "pointer" }}>
-                            <Link style={{ textDecoration: "none", color: "black" }} to="/shipping-policy" >Chính sách vận chuyển</Link>
+                        <div onClick={() => handleOnclick('/preventation-policy')} className=" red col policy p-2 " style={{ cursor: "pointer", width: "fit-content" }} >
+                            Hướng dẫn bảo quản sản phẩm</div>
+                        <div onClick={() => handleOnclick('/shipping-policy')} className=" red col p-2 policy " style={{ cursor: "pointer", width: "fit-content" }}>
+                            Chính sách vận chuyển
                         </div>
-                        <div className="guideline3 red col p-2" style={{ cursor: "pointer" }}>
-                            <Link style={{ textDecoration: "none", color: "black" }} to="/return-refund-policy" >Chính sách đổi trả</Link>
+                        <div onClick={() => handleOnclick('/return-refund-policy')} className=" red col p-2 policy " style={{ cursor: "pointer", width: "fit-content" }}>
+                            Chính sách đổi trả
                         </div>
 
                     </div>
                     <div className="contact col-4 red ">
                         <div className="contact-title red fw-bold pt-3 p-2">Liên hệ với chúng tôi</div>
-                        <div className="contact-address red p-2"><span className="fw-bold">Địa chỉ: </span> <a style={{ textDecoration: "none" }} href="https://maps.app.goo.gl/JNbbHgsMtuS4Hgkx8" title="open in googlemap">345 Võ Văn Tần, Phường 05, Quận 3, Hồ Chí Minh</a>
+                        <div className="contact-address red p-2"><span className="fw-bold">Địa chỉ: </span> <a style={{ textDecoration: "none" }} href="https://maps.app.goo.gl/JNbbHgsMtuS4Hgkx8" target="_blank" title="open in googlemap">345 Võ Văn Tần, Phường 05, Quận 3, Hồ Chí Minh</a>
                         </div>
                         <div className="contact-email red p-2">
                             <span className="fw-bold">Email: </span><a style={{ textDecoration: "none" }} href="mailto:tuanbui2122@gmail.com" title="mail to tuanbui2122@gmail.com">Tuanbui2122@gmail.com</a>
@@ -129,4 +135,4 @@ const footer = () => {
         </>
     )
 }
-export default footer;
+export default Footer;

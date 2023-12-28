@@ -2,7 +2,8 @@
 const Usage = () => {
     return (
         <>
+
         </>
     )
 }
-export default Usage
+export default Usage;

@@ -11,8 +11,11 @@
 }
 
 .accordion-body:hover,
-.accordion-collapse:hover {
+.accordion-collapse:hover,
+.footer-usage:hover,
+.policy:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .accordion {
@@ -40,6 +43,7 @@
 .carousel-control-prev,
 .carousel-control-next {
   width: 25% !important;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
