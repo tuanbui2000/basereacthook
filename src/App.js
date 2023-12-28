@@ -10,6 +10,7 @@ import DisplayAllItem from './components/DisplayItem';
 import { useLayoutEffect } from 'react';
 import ReturnRefund from './components/Footer/ReturnRefurn';
 import Usage from './components/Footer/Usage';
+import Payment from './components/Payment/Payment';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/return-refund-policy" element={<ReturnRefund />} />
             <Route path="/all-item" element={<DisplayAllItem />} />
             <Route path="/shipping-policy" element={<Shipping />} />
+            <Route path="/Payment" element={<Payment />} />
             <Route path="/usage" element={<Usage />} />
             <Route path="/*" element={<Navigate to="/home" />} />
           </Routes>

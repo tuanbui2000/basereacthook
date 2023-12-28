@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasBody, ButtonGroup, Button } from 'reactstrap';
-
+import { useNavigate } from "react-router-dom";
 
 
 const Cart = (props) => {
@@ -33,11 +33,17 @@ const Cart = (props) => {
     }, [cartItem, props.setCartCurrentCount]);
 
 
+    let navigate = useNavigate();
 
+
+    const payment = () => {
+        navigate(`/Payment`);
+        props.cartCheck()
+    }
 
     const displayCartItem = cartItem.map((item, index) => {
         return (
-            <div className=' red row mb-3' key={index} >
+            <div className=' red row mb-3' key={item.id} >
 
                 <div className='col-3 red'>
                     <div style={style}></div>
@@ -68,6 +74,13 @@ const Cart = (props) => {
 
                 </div>
             </div>
+
+
+
+
+
+
+
         )
     })
 
@@ -90,6 +103,24 @@ const Cart = (props) => {
                 </OffcanvasHeader>
                 <OffcanvasBody>
                     {displayCartItem}
+
+
+
+                    <div className="cart-footer">
+                        <hr />
+                        <div className="clearfix">
+                            <div className="cart__subtotal d-flex justify-content-between ">
+                                <div className="cart__col-6">Tổng tiền:</div>
+                                <div className="text-right cart__totle fw-bold">
+                                    <span style={{ color: "red" }} className="total-price ">$667,92</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="cart__btn-proceed-checkout-dt text-center">
+                            <button type="button" onClick={() => payment()} className="border border-dark btn btn-dark cart__btn-proceed-checkout"  >Thanh toán</button>
+                        </div>
+                    </div>
+
                 </OffcanvasBody>
 
 
