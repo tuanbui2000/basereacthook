@@ -3,7 +3,7 @@ const PreservationPolicy = () => {
     return (
         <>
             <div className="red mt-3 mb-5 container">
-                <h5>Hướng dẫn bảo quản sản phẩm</h5>
+                <h3>Hướng dẫn bảo quản sản phẩm</h3>
                 <ul>
                     <li>   Giặt bằng tay, hạn chế giặt máy (lộn trái nếu giặt máy).</li>
                     <br />

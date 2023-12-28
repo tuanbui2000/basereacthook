@@ -23,6 +23,7 @@ const MenuBar = (props) => {
 
 
     const handleOnclick = (link) => {
+        props.noRefCheck();
         navigate(`${link}`);
     }
 

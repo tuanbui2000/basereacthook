@@ -3,7 +3,7 @@ const Shipping = () => {
     return (
         <>
             <div className="red container mt-3 mb-6">
-                <h5>Chính sách vận chuyển</h5>
+                <h3 className="mb-3">Chính sách vận chuyển</h3>
                 <ul>
                     <li>   Thời gian giao hàng dự kiến từ 2-5 ngày đối với tuỳ thuộc vào khu vực nhận hàng với mức phí giao hàng COD tận nhà dao động từ 25.000 - 35.000 vnd.</li>
                     <br />
