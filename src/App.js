@@ -35,7 +35,7 @@ function App() {
             <Route path="/return-refund-policy" element={<ReturnRefund />} />
             <Route path="/all-item" element={<DisplayAllItem />} />
             <Route path="/shipping-policy" element={<Shipping />} />
-            <Route path="/Payment" element={<Payment />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="/usage" element={<Usage />} />
             <Route path="/*" element={<Navigate to="/home" />} />
           </Routes>
