@@ -108,7 +108,7 @@ const Cart = (props) => {
 
                                         </div>
                                         <div className='col-6 text-end red '>
-                                            <div className=' text-danger h6 red pe-3'> {item.price}</div>
+                                            <div className=' text-danger h6 red pe-3'> ${item.price}</div>
                                             <Button className='red py-0 px-1 ' color='dark' onClick={() => removeItemFromCart(item.id)}> remove</Button>
                                         </div>
 
