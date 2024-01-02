@@ -37,7 +37,7 @@ const Cart = (props) => {
 
 
     const payment = () => {
-        navigate(`/Payment`);
+        navigate(`/payment`);
         props.cartCheck()
     }
 
