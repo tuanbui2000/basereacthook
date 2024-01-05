@@ -83,9 +83,31 @@ const Payment = () => {
                         </div>
                         <div className="row d-flex justify-content-between mb-2 red">
                             <button className="col-1 btn btn-primary red">return</button>
-                            <button className="col-5 btn btn-primary red">next</button>
+                            <button className="col-5 btn btn-primary red">tới phương thức vận chuyển</button>
 
                         </div>
+
+                        {/* từ đây là trang sau */}
+
+                        <div>
+                            <hr />
+                            <div className="border border-dark text-start">
+                                <div> thông tin nhận hàng</div>
+                                <div> tên </div>
+                                <div> địa chỉ </div>
+                                <div> ghi chú nếu có </div>
+                            </div>
+                            <div> chọn phương thức giao hàng 1</div>
+                            <div> chọn phương thức giao hàng 1</div>
+                            <div className="row d-flex justify-content-between mb-2 red">
+                                <button className="col-1 btn btn-primary red">return</button>
+                                <button className="col-5 btn btn-primary red">next</button>
+
+                            </div>
+
+                        </div>
+
+                        {/* tới đây */}
 
                     </div>
                     <div className="col-5 red">
