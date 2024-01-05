@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 const Header = () => {
     const location = useLocation();
     const currentPath = location.pathname;
-
+console.log(currentPath);
     const sizeIcon = '30'
     const logoStyle = {
         borderRadius: '50%',
@@ -31,7 +31,7 @@ const Header = () => {
     const [cartCurrentCount, setCartCurrentCount] = useState(5);
 
     return (
-        <>
+        <> {currentPath !== '/payment' &&
             <div
                 className={currentPath === "/home" ? "container-fluid sticky-top  bs-tertiary-bg red shadow" :
                     "container-fluid  bs-tertiary-bg red shadow"
@@ -72,10 +72,10 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Breadcrumb */}
 
+        }
 
-            {currentPath !== "/home" &&
+            {currentPath !== "/home"|| currentPath !== '/payment' &&
                 <div className='container-fluid red bg-body-secondary'>
 
                     <div className='container red  g-0'>
