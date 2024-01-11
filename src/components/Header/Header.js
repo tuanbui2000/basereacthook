@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 const Header = () => {
     const location = useLocation();
     const currentPath = location.pathname;
-console.log(currentPath);
+
     const sizeIcon = '30'
     const logoStyle = {
         borderRadius: '50%',
@@ -75,7 +75,7 @@ console.log(currentPath);
 
         }
 
-            {currentPath !== "/home"|| currentPath !== '/payment' &&
+            {currentPath !== "/home" || currentPath !== '/payment' &&
                 <div className='container-fluid red bg-body-secondary'>
 
                     <div className='container red  g-0'>
