@@ -1,24 +1,42 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Payment = () => {
-    const [isShiptobuyer, setIsShiptobuyer] = useState(true);
-    const [isShipping, setIsShipping] = useState(true);
-    const [isPaymentMethod, setIsPaymentMethod] = useState(false);
-
+    const defaultPaymentInfo = {
+        name: '',
+        email: '',
+        PhoneNumber: '',
+        Address: '',
+        DeliveryMethod: '',
+        PaymentMethod: '',
+        note: '',
+    }
+    const [isShiptobuyer, setIsShiptobuyer] = useState(false);
+    const [isShipping, setIsShipping] = useState(false);
+    const [isPaymentMethod, setIsPaymentMethod] = useState(true);
+    const [paymentInfo, setPaymentInfo] = useState(defaultPaymentInfo)
 
     const handleCheckboxChange = () => {
         setIsShiptobuyer(!isShiptobuyer)
     }
 
     const shippingMethod = [
-        { for: "shippingMethod", id: 1, name: "Phương thức vận chuyển 1", note: 100 },
-        { for: "shippingMethod", id: 2, name: "Phương thức vận chuyển 2", note: 100 },
-        { for: "shippingMethod", id: 3, name: "Phương thức vận chuyển 3", note: 100 },
+        { for: "shippingMethod", id: 1, name: "Giao hàng nhanh", note: 100, checked: 'false' },
+        { for: "shippingMethod", id: 2, name: "Giao hàng tiết kiệm", note: 200, checked: 'false' },
+        { for: "shippingMethod", id: 3, name: "Giao hàng cho vui", note: 300, checked: 'false' }
     ]
     const paymentMethod = [
-        { for: "paymentMethod", id: 1, name: "Phương thức thanh toán 1", note: 100 },
-        { for: "paymentMethod", id: 2, name: "Phương thức thanh toán 2", note: 100 },
+        { for: "paymentMethod", id: 6, name: "Thanh toán khi giao hàng (COD)", note: 400, checked: 'false' },
+        { for: "paymentMethod", id: 5, name: "Chuyển khoản", note: 500, checked: 'false' },
+        { for: "paymentMethod", id: 4, name: "MOMO", note: 500, checked: 'false' }
     ]
+    let navigate = useNavigate();
+
 
 
     const displayMethod = (name, listMethod) => {
@@ -27,18 +45,23 @@ const Payment = () => {
                 <h4> {name} </h4>
                 {
                     listMethod.map((item, index) => {
-                        <div className="  form-control form-check  border border-secondary mt-3 d-flex justify-content-between" for={index} >
-                            <span>
+                        return (
 
-                                <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name={item.for} id={item.id} />
-                                <label className="form-check-label ms-3" htmlFor={item.id}  >
-                                    {item.name}
-                                </label>
-                            </span>
-                            <span>
-                                {item.note}
-                            </span>
-                        </div>
+                            <div key={index} >
+
+                                <div className="  form-control form-check  border border-secondary mt-3 d-flex justify-content-between" >
+                                    <span>
+                                        <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name={item.for} id={item.for + item.id} />
+                                        <label className="form-check-label ms-3" htmlFor={item.for + item.id}  >
+                                            {item.name}
+                                        </label>
+                                    </span>
+                                    <span className="text-danger fw-bold">
+                                        ${item.note}
+                                    </span>
+                                </div>
+                            </div>
+                        )
 
 
                     })
@@ -47,175 +70,155 @@ const Payment = () => {
             </>
         )
     }
+    const toForeWard = () => {
+        if (true) {
 
+            if (isShipping === false) {
+                setIsShipping(true)
+
+
+            } else {
+
+                setIsPaymentMethod(false)
+            }
+        } else {
+            toast.error("please fill out all fields");
+        }
+    }
+    const toBackward = () => {
+
+        if (isShipping === true && isPaymentMethod === false) {
+            setIsPaymentMethod(true)
+
+        } else if (isShipping === true && isPaymentMethod === true) {
+            setIsShipping(false)
+        } else {
+            navigate(`/cartItem`);
+        }
+
+
+    }
+    const handleOnchangeInfo = (field, input) => {
+        let tempArr = { ...paymentInfo }
+        tempArr[field] = input;
+        setPaymentInfo(tempArr)
+    }
+
+    const handleOnchangeShipping = () => {
+
+    }
+
+
+
+
+    const validateEmail = (email) => {
+        let regex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+
+        return (regex.test(email))
+
+    };
     return (
         <>
 
+
             <div className="container red ">
                 <div className="row p-3 red " >
-
-
                     <div className="col-7 px-6  red ">
-                        {isPaymentMethod === true && <>
-                            <div className="logo red text-center"><h1>LOGO</h1></div>
-                            <div className=" mb-2 red" > cần 3 bước với icon cụ thể </div>
-                            <div className=" mb-2 red  fw-bold" ><h4>  thông tin khách hàng</h4> </div>
+                        <div className="logo red text-center"><h1>LOGO</h1></div>
+                        <div className=" mb-2 red" > Giỏ hàng -Thông tin-Vận chuyển-Thanh toán </div>
+                        {isShipping === false ?
+                            <>
 
-                            <input className="form-control mb-2 red" type="text" placeholder="email" aria-label="default input example" />
-                            <input className="form-control mb-2 red" type="text" placeholder="tên" aria-label="default input example" />
-                            <input className="form-control mb-2 red" type="text" placeholder="sdt" aria-label="default input example" />
-                            <input className="form-control mb-2 red" type="text" placeholder="địa chỉ" aria-label="default input example" />
+                                <div className=" mb-2 red  fw-bold" ><h4>  thông tin khách hàng</h4> </div>
 
-                            <div className="row  red d-flex justify-content-center mb-2" >
+                                <input className="form-control mb-2 red" type="text" placeholder="email" aria-label="default input example" value={paymentInfo.email} onChange={(event) => handleOnchangeInfo("email", event.target.value)} />
+                                <input className="form-control mb-2 red" type="text" placeholder="tên" aria-label="default input example" value={paymentInfo.name} onChange={(event) => handleOnchangeInfo("name", event.target.value)} />
+                                <input className="form-control mb-2 red" type="text" placeholder="sdt" aria-label="default input example" value={paymentInfo.PhoneNumber} onChange={(event) => handleOnchangeInfo("PhoneNumber", event.target.value)} />
+                                <input className="form-control mb-2 red" type="text" placeholder="địa chỉ" aria-label="default input example" value={paymentInfo.Address} onChange={(event) => handleOnchangeInfo("Address", event.target.value)} />
 
-                                <div className="col-auto red">
-                                    <input type="password" className="form-control red" aria-describedby="passwordHelpInline" />
+                                <div className=" mb-2 red">
+
+                                    <input id="isShiptoOther" type="checkbox"
+                                        onChange={() => handleCheckboxChange()}
+
+                                    /> Giao hàng đến địa chỉ khác
                                 </div>
-                                <div className="col-auto red ">
-                                    <input type="password" className="form-control red" aria-describedby="passwordHelpInline" />
-                                </div>
-                                <div className="col-auto red">
-                                    <input type="password" className="form-control red" aria-describedby="passwordHelpInline" />
-                                </div>
-
-                            </div>
-                            <div className=" mb-2 red">
-
-                                <input id="isShiptoOther" type="checkbox"
-                                    onChange={() => handleCheckboxChange()}
-
-                                /> Giao hàng đến địa chỉ khác
-                            </div>
-                            <div className="input-group m-6 red">
-
-                            </div>
-
-                            {isShiptobuyer === false &&
-                                <div className="mt-3">
-
-                                    <div className=" mb-2 red  fw-bold" ><h4>  thông tin người nhận</h4> </div>
-                                    <input className="form-control mb-2 red" type="text" placeholder="email" aria-label="default input example" />
-                                    <input className="form-control mb-2 red" type="text" placeholder="tên" aria-label="default input example" />
-                                    <input className="form-control mb-2 red" type="text" placeholder="sdt" aria-label="default input example" />
-                                    <input className="form-control mb-2 red" type="text" placeholder="địa chỉ" aria-label="default input example" />
-
-                                    <div className="row  red d-flex justify-content-center mb-2" >
-
-                                        <div className="col-auto red">
-                                            <input type="password" className="form-control red" aria-describedby="passwordHelpInline" />
-                                        </div>
-                                        <div className="col-auto red ">
-                                            <input type="password" className="form-control red" aria-describedby="passwordHelpInline" />
-                                        </div>
-                                        <div className="col-auto red">
-                                            <input type="password" className="form-control red" aria-describedby="passwordHelpInline" />
-                                        </div>
-
-                                    </div>
-
-
+                                <div className="input-group m-6 red">
 
                                 </div>
-                            }
 
+                                {isShiptobuyer === true &&
+                                    <div className="mt-3">
 
-                            <div className="input-group mb-2 red">
-
-                                <textarea className="form-control red" aria-label="With textarea"></textarea>
-                            </div>
-                            <div className="row d-flex justify-content-between mb-2 red">
-                                <button className="col-1 btn btn-primary red">return</button>
-                                <button className="col-5 btn btn-primary red">tới phương thức vận chuyển</button>
-
-                            </div>
-                        </>
-                        }
-                        {isShipping === true &&
-
-                            <div>
-                                <hr />
-                                <div className="border border-secondary rounded  p-3">
-                                    <div> thông tin nhận hàng</div>
-                                    <div> tên </div>
-                                    <div> email </div>
-                                    <div> Sdt </div>
-                                    <div> địa chỉ </div>
-                                    <div> ghi chú nếu có </div>
-                                    <hr />
-                                    <div className="red d-flex justify-content-between">
-                                        <span>Phương thức vận chuyển</span>
-                                        <span >Thay đổi </span>
+                                        <div className=" mb-2 red  fw-bold" ><h4>  thông tin người nhận</h4> </div>
+                                        <input className="form-control mb-2 red" type="text" placeholder="email" aria-label="default input example" />
+                                        <input className="form-control mb-2 red" type="text" placeholder="tên" aria-label="default input example" />
+                                        <input className="form-control mb-2 red" type="text" placeholder="sdt" aria-label="default input example" />
+                                        <input className="form-control mb-2 red" type="text" placeholder="địa chỉ" aria-label="default input example" />
 
 
                                     </div>
-                                    <div>Giao hàng tận nơi · $25,000.00</div>
-                                </div>
-                                {
-                                    displayMethod("vaanj chuyenj", shippingMethod)
                                 }
-                                {/* <h4> Vận chuyển </h4>
-                                <div className="  form-control form-check  border border-secondary mt-3 d-flex justify-content-between" targetid="flexRadioDefault1">
-                                    <span>
 
-                                        <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name="flexRadioDefault" id="flexRadioDefault1" defaultChecked />
-                                        <label className="form-check-label ms-3" htmlFor="flexRadioDefault1">
-                                            phương thức vận chuyển 1
-                                        </label>
-                                    </span>
-                                    <span>
 
-                                        $100
-                                    </span>
-                                </div> 
-                                <div className="  form-control form-check  border border-secondary mt-3  d-flex justify-content-between ">
-                                    <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                    <label className="form-check-label ms-3" htmlFor="flexRadioDefault2">
-                                        phương thức vận chuyển 2
-                                    </label>
-                                    <span>
+                                <div className="input-group mb-2 red">
 
-                                        $100
-                                    </span>
+                                    <textarea className="form-control red" aria-label="With textarea" value={paymentInfo.note} onChange={(event) => handleOnchangeInfo("note", event.target.value)}></textarea>
                                 </div>
 
-*/}
+                            </>
+                            :
+                            <>
+
+                                <div className="border border-secondary rounded  p-3">
+                                    <div className="fw-bold"> {paymentInfo.name} </div>
+                                    <div> {paymentInfo.email} </div>
+                                    <div> {paymentInfo.PhoneNumber} </div>
+                                    <div> {paymentInfo.Address} </div>
+                                    <div> {paymentInfo.note} </div>
+
+                                    {isPaymentMethod === false &&
+                                        <>
+                                            <hr />
+                                            <div className="red d-flex justify-content-between">
+                                                <span>Phương thức vận chuyển</span>
+                                                <span >Thay đổi </span>
 
 
+                                            </div>
 
+                                            <div>Giao hàng tận nơi · $25,000.00</div>
+                                        </>
+                                    }
+                                </div>
+                                {isPaymentMethod === true ?
 
-
-                                {/* chọn phương thức thanh toán */}
-                                <hr />
-                                <div>
-
-
-                                    <h4 className="red ">  Thanh toán </h4>
-
-                                    <div className="  form-control form-check  border border-secondary mt-3">
-                                        <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name="paymentMethod" id="paymentMethod1" />
-                                        <label className="form-check-label ms-3" htmlFor="paymentMethod1">
-                                            phương thức thanh toán 1
-                                        </label>
+                                    <div className="red">
+                                        {displayMethod("vận chuyển", shippingMethod)}
                                     </div>
-                                    <div className="  form-control form-check  border border-secondary mt-3">
-                                        <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name="paymentMethod" id="paymentMethod2" />
-                                        <label className="form-check-label ms-3" htmlFor="paymentMethod2">
-                                            phương thức thanh toán 2
-                                        </label>
+                                    :
+                                    <div className="red">
+                                        {displayMethod("Thanh toán", paymentMethod)}
                                     </div>
+                                }
 
-                                </div>
-                                {/* cho tới đây nè */}
-                                <div className="row d-flex justify-content-between mb-2 red">
-                                    <button className="col-1 btn btn-primary red">return</button>
-                                    <button className="col-5 btn btn-primary red">next</button>
 
-                                </div>
 
-                            </div>
-
+                            </>
                         }
 
+
+
+
+                        <div className="row d-flex justify-content-between my-3 red">
+                            <button className="col-2 btn btn-primary red" onClick={() => toBackward()} >{isShipping === false ? "giỏ hàng" : "return"}</button>
+                            <button className="col-5 btn btn-primary red" onClick={() => toForeWard()}>
+
+                                {isShipping === false ? "tới phương thức vận chuyển" :
+                                    isPaymentMethod === true ? "tới phương thức thanh toán" : "Chi tiết đơn hàng"}
+                            </button>
+
+                        </div>
 
                     </div>
                     <div className="col-5 red">

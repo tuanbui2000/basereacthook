@@ -12,7 +12,8 @@ import ReturnRefund from './components/Footer/ReturnRefurn';
 import Usage from './components/Footer/Usage';
 import Payment from './components/Payment/Payment';
 import CartItem from './components/CartItem';
-
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 function App() {
 
 
@@ -23,6 +24,7 @@ function App() {
     }, [location.pathname]);
     return children
   }
+
   return (
     <>
       <BrowserRouter>
@@ -42,11 +44,25 @@ function App() {
           </Routes>
           <Footer />
         </Wrapper>
+        <ToastContainer
+
+          position='bottom-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnclick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+
+        />
       </BrowserRouter>
       <div className="App ">
         <header className="App-header">
         </header>
       </div>
+
     </>
   );
 }
