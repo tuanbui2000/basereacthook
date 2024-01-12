@@ -39,7 +39,7 @@ function App() {
             <Route path="/all-item" element={<DisplayAllItem />} />
             <Route path="/shipping-policy" element={<Shipping />} />
             <Route path="/payment" element={<Payment />} />
-            <Route path="/cartItem" element={<CartItem />} />
+            <Route path="/cartlist" element={<CartItem />} />
             <Route path="/*" element={<Navigate to="/home" />} />
           </Routes>
           <Footer />
