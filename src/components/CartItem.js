@@ -1,15 +1,12 @@
 import { Button, ButtonGroup } from "reactstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const CartItem = () => {
+import { connect } from "react-redux";
+
+const CartItem = (state) => {
 
 
-    const defaultList = [
-        { id: 1, name: "vay", size: "S", color: "red", brand: "tún brand", price: "123", quantity: 1 },
-        { id: 2, name: "skirt", size: "M", color: "blue", brand: "tún brand", price: "23", quantity: 3 },
-        { id: 3, name: "dress", size: "L", color: "white", brand: "tún brand", price: "3423", quantity: 2 },
-        { id: 4, name: "jean", size: "XL", color: "redrum", brand: "tún brand", price: "123", quantity: 4 },
-    ]
+    let listProducts = state.listProducts
 
     const style = {
         backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -20,41 +17,34 @@ const CartItem = () => {
 
     }
 
-    const [itemList, setItemList] = useState(defaultList)
+
     let navigate = useNavigate();
 
-    const payment = () => {
-        navigate(`/payment`);
+    const Navigator = (URL) => {
+        navigate(`/${URL}`);
     }
-    const setQuantity = (index, quantity) => {
-        let toSetArray = [...itemList];
-        toSetArray[index].quantity = quantity;
-        setItemList(toSetArray);
-    }
+
     let total = 0;
 
-    itemList.forEach(item => {
+    listProducts.forEach(item => {
         total += item.price * item.quantity;
     });
 
 
 
 
-    const removeItemFromCart = (idToDelete) => {
-        const newArray = itemList.filter(item => item.id !== idToDelete)
 
-        setItemList(newArray)
-    }
+
     return (
 
         <>
             <div className="container red ">
-                <div className="row red ">
+                <div className="row red my-3">
 
 
                     <div className="col-8 red">
                         <div className="h3  red">Cart </div>
-                        {itemList.map((item, index) => {
+                        {listProducts.map((item, index) => {
 
                             return (
                                 <div key={index}>
@@ -67,21 +57,21 @@ const CartItem = () => {
                                                 <span className="text-danger fw-bold">${item.price}</span>
                                                 <span>
                                                     <ButtonGroup size='sm'>
-                                                        <Button outline color="dark" onClick={() => setQuantity(index, item.quantity > 1 ? item.quantity - 1 : item.quantity)} disabled={item.quantity <= 1}>
+                                                        <Button outline color="dark" onClick={() => state.setQuantity(index, item.quantity > 1 ? item.quantity - 1 : item.quantity)} disabled={item.quantity <= 1}>
                                                             -
                                                         </Button>
                                                         <Button outline color="dark" style={{ pointerEvents: "none", fontWeight: "600" }}>
                                                             {item.quantity}
                                                         </Button>
 
-                                                        <Button outline color="dark" onClick={() => setQuantity(index, item.quantity + 1)}   >
+                                                        <Button outline color="dark" onClick={() => state.setQuantity(index, item.quantity + 1)}   >
                                                             +
                                                         </Button>
                                                     </ButtonGroup>
                                                 </span>
 
                                             </div>
-                                            <div className=" red " ><span className=" text-danger policy" onClick={() => removeItemFromCart(item.id)}> Remove</span></div>
+                                            <div className=" red " ><span className=" text-danger policy" onClick={() => state.removeItemFromCart(item.id)}> Remove</span></div>
 
                                         </div>
                                     </div>
@@ -91,33 +81,44 @@ const CartItem = () => {
 
 
                         <hr />
+                        {listProducts.length > 0 ?
+                            <>
+
+                                <div className="row red my-3">
+                                    <div className="col-4 red "><span className="policy" onClick={() => navigate(`/home`)}> &lt; Tiếp tục mua hàng</span></div>
 
 
-                        <div className="row red my-3">
-                            <div className="col-4 red "><span className="policy" onClick={() => navigate(`/home`)}> &lt; Tiếp tục mua hàng</span></div>
 
+                                    <div className=" col-8  justify-content-center red row g-0">
+                                        <div className=" col-8  text-center  red ">
 
+                                            <div className="red d-flex justify-content-between ">
+                                                <span> tạm tính</span>
+                                                <span> $123</span>
+                                            </div>
+                                            <div className="red d-flex justify-content-between mb-3">
+                                                <span className="text-dark fw-bold"> Total</span>
+                                                <span className="text-danger fw-bold">${total} </span>
+                                            </div>
+                                            <Button className="btn-dark" onClick={() => Navigator("payment")}  > tính xiền</Button>
 
-                            <div className=" col-8  justify-content-center red row g-0">
-                                <div className=" col-8  text-center  red ">
-
-                                    <div className="red d-flex justify-content-between ">
-                                        <span> tạm tính</span>
-                                        <span> $123</span>
+                                        </div>
                                     </div>
-                                    <div className="red d-flex justify-content-between mb-3">
-                                        <span className="text-dark fw-bold"> Total</span>
-                                        <span className="text-danger fw-bold">${total} </span>
-                                    </div>
-                                    <Button className="btn-dark" onClick={() => payment()}  > tính xiền</Button>
+
 
                                 </div>
-                            </div>
+                            </> :
+                            <>
+                                <div className="row red my-3 text-center">
+                                    There is no item in your cart
 
-
-                        </div>
-
+                                    <div >  <button className="btn btn-dark" onClick={() => Navigator()}>go to home</button>
+                                    </div>
+                                </div>
+                            </>
+                        }
                     </div>
+
 
                     <div className="col-4 red">
 
@@ -133,7 +134,7 @@ const CartItem = () => {
                         <div className="red border border-secondary p-3">
 
                             <h6>
-                                Mua sắm cùng Larmes
+                                Mua sắm cùng Tún
                             </h6>
 
                             <div> Sản phẩm đẹp, thân thiện với môi trường</div>
@@ -156,4 +157,16 @@ const CartItem = () => {
         </>
     )
 }
-export default CartItem;   
+
+const mapStateToProps = (state) => {
+    return { listProducts: state.products }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeItemFromCart: (productId) => dispatch({ type: "DELETE_ITEM_CART", payload: { productId } }),
+        setQuantity: (index, quantity) => dispatch({ type: "UPDATE_ITEM_CART", payload: { index, quantity } }),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);   

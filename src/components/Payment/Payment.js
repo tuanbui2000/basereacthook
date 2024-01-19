@@ -28,14 +28,14 @@ const Payment = () => {
     }
 
     const shippingMethod = [
-        { for: "shippingMethod", id: 1, name: "Giao hàng nhanh", note: 100, checked: 'false' },
-        { for: "shippingMethod", id: 2, name: "Giao hàng tiết kiệm", note: 200, checked: 'false' },
-        { for: "shippingMethod", id: 3, name: "Giao hàng cho vui", note: 300, checked: 'false' }
+        { htmlFor: "shippingMethod", id: 1, name: "Giao hàng nhanh", note: 100, checked: 'false' },
+        { htmlFor: "shippingMethod", id: 2, name: "Giao hàng tiết kiệm", note: 200, checked: 'false' },
+        { htmlFor: "shippingMethod", id: 3, name: "Giao hàng cho vui", note: 300, checked: 'false' }
     ]
     const paymentMethod = [
-        { for: "paymentMethod", id: 6, name: "Thanh toán khi giao hàng (COD)", note: 400, checked: 'false' },
-        { for: "paymentMethod", id: 5, name: "Chuyển khoản", note: 500, checked: 'false' },
-        { for: "paymentMethod", id: 4, name: "MOMO", note: 500, checked: 'false' }
+        { htmlFor: "paymentMethod", id: 6, name: "Thanh toán khi giao hàng (COD)", note: 400, checked: 'false' },
+        { htmlFor: "paymentMethod", id: 5, name: "Chuyển khoản", note: 500, checked: 'false' },
+        { htmlFor: "paymentMethod", id: 4, name: "MOMO", note: 500, checked: 'false' }
     ]
     let navigate = useNavigate();
 
@@ -53,8 +53,8 @@ const Payment = () => {
 
                                 <div className="  form-control form-check  border border-secondary mt-3 d-flex justify-content-between" >
                                     <span>
-                                        <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name={item.for} id={item.for + item.id} />
-                                        <label className="form-check-label ms-3" htmlFor={item.for + item.id}  >
+                                        <input className="form-check-input red  " style={{ marginLeft: "-13px" }} type="radio" name={item.htmlFor} id={item.htmlFor + item.id} />
+                                        <label className="form-check-label ms-3" htmlFor={item.htmlFor + item.id}  >
                                             {item.name}
                                         </label>
                                     </span>
@@ -155,17 +155,17 @@ const Payment = () => {
                             </span>
                             <span
                                 className={progress >= 33.33 ? "position-absolute   text-dark text-center bg-white px-1" : "position-absolute   text-body-tertiary text-center bg-white px-1"}
-                                style={{ top: "-13px", left: "33.33%", transform: "translateX(-50%)" }}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                                style={{ top: "-13px", left: "33.33%", transform: "translateX(-50%)" }}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-truck" viewBox="0 0 16 16">
                                     <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
                                 </svg><br />
                                 <span >vận chuyển</span></span>
-                            <span className={progress >= 66.66 ? "position-absolute   text-dark text-center bg-white px-1" : "position-absolute   text-body-tertiary text-center bg-white px-1"} style={{ top: "-13px", left: "66.66%", transform: "translateX(-50%)" }}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                            <span className={progress >= 66.66 ? "position-absolute   text-dark text-center bg-white px-1" : "position-absolute   text-body-tertiary text-center bg-white px-1"} style={{ top: "-13px", left: "66.66%", transform: "translateX(-50%)" }}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-credit-card" viewBox="0 0 16 16">
                                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
                                 <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
                             </svg><br />
                                 <span >thanh toán</span></span>
 
-                            <span className="position-absolute  start-100  text-body-tertiary  text-center bg-white px-1  " style={{ top: "-13px", transform: "translateX(-50%)" }}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                            <span className="position-absolute  start-100  text-body-tertiary  text-center bg-white px-1  " style={{ top: "-13px", transform: "translateX(-50%)" }}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-check-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                                 <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
                             </svg><br />
@@ -178,9 +178,9 @@ const Payment = () => {
                             <div className="mt-1">
 
                                 <div className=" mb-2 mt-3 red  fw-bold" ><h4>  thông tin khách hàng</h4> </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="email" value={paymentInfo.email} onChange={(event) => handleOnchangeInfo("email", event.target.value)} />
-                                    <label for="floatingInput">Email address</label>
+                                <div className="form-floating mb-3">
+                                    <input type="email" className="form-control" id="floatingInput" placeholder="email" value={paymentInfo.email} onChange={(event) => handleOnchangeInfo("email", event.target.value)} />
+                                    <label htmlFor="floatingInput">Email address</label>
                                 </div>
                                 <input className="form-control mb-2 red" type="text" placeholder="tên" aria-label="default input example" value={paymentInfo.name} onChange={(event) => handleOnchangeInfo("name", event.target.value)} />
                                 <input className="form-control mb-2 red" type="text" placeholder="sdt" aria-label="default input example" value={paymentInfo.PhoneNumber} onChange={(event) => handleOnchangeInfo("PhoneNumber", event.target.value)} />
@@ -212,9 +212,9 @@ const Payment = () => {
 
 
 
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" value={paymentInfo.note} onChange={(event) => handleOnchangeInfo("note", event.target.value)}></textarea>
-                                    <label for="floatingTextarea">Ghi chú</label>
+                                <div className="form-floating">
+                                    <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea" value={paymentInfo.note} onChange={(event) => handleOnchangeInfo("note", event.target.value)}></textarea>
+                                    <label htmlFor="floatingTextarea">Ghi chú</label>
                                 </div>
 
 
